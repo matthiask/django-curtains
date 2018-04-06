@@ -55,9 +55,6 @@ ONLY_STAFF_PAGE = '''
 
 
 def only_staff(get_response):
-    if settings.DEBUG:
-        return get_response
-
     def middleware(request):
         if request.path.startswith(ONLY_STAFF_EXEMPT):
             return get_response(request)

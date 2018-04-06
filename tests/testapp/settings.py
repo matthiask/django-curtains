@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'testapp',
-    'only_staff',
+    'curtains',
 ]
 
 BASEDIR = os.path.dirname(__file__)
@@ -31,7 +31,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'only_staff.middleware.only_staff',
+    'curtains.middleware.only_staff',
 ]
 TEMPLATES = [
     {

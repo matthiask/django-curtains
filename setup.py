@@ -9,13 +9,13 @@ def read(filename):
 
 
 setup(
-    name='django-only-staff',
-    version=__import__('only_staff').__version__,
+    name='django-curtains',
+    version=__import__('curtains').__version__,
     description='Middleware for only allowing access to staff members',
     long_description=read('README.rst'),
     author='Matthias Kestenholz',
     author_email='mk@feinheit.ch',
-    url='http://github.com/matthiask/django-only-staff/',
+    url='http://github.com/matthiask/django-curtains/',
     license='BSD License',
     platforms=['OS Independent'],
     packages=find_packages(exclude=['tests']),

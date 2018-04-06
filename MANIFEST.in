@@ -2,4 +2,4 @@ include LICENSE
 include MANIFEST.in
 include README.rst
 include CHANGELOG.rst
-recursive-include only_staff *.html *.js *.css *.po *.mo
+recursive-include curtains *.html *.js *.css *.po *.mo
