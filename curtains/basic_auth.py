@@ -2,10 +2,8 @@ from __future__ import unicode_literals
 
 import base64
 
+from django.conf import settings
 from django.http import HttpResponse
-
-
-BASIC_AUTH_CREDENTIALS = ['early', 'birds']
 
 
 def parse_basic_authorization(value):
@@ -22,7 +20,7 @@ def basic_auth(get_response):
     def middleware(request):
         if parse_basic_authorization(
                 request.META.get('HTTP_AUTHORIZATION')
-        ) == BASIC_AUTH_CREDENTIALS:
+        ) == settings.BASIC_AUTH_CREDENTIALS:
             return get_response(request)
 
         response = HttpResponse()
