@@ -20,7 +20,7 @@ def basic_auth(get_response):
     def middleware(request):
         if parse_basic_authorization(
                 request.META.get('HTTP_AUTHORIZATION')
-        ) == settings.BASIC_AUTH_CREDENTIALS:
+        ) == list(settings.BASIC_AUTH_CREDENTIALS):
             return get_response(request)
 
         response = HttpResponse()
