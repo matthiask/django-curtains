@@ -2,7 +2,9 @@
 django-curtains - Middleware for temporarily protecting projects
 ================================================================
 
-Version |release|
+.. image:: https://travis-ci.org/matthiask/django-curtains.svg?branch=master
+    :target: https://travis-ci.org/matthiask/django-curtains
+
 
 Usage
 =====
@@ -26,6 +28,3 @@ Requires basic authorization to access the site. The
 ``BASIC_AUTH_CREDENTIALS`` setting should be set to a list containing
 the username and the password for basic authorization, e.g.
 ``BASIC_AUTH_CREDENTIALS = ['early', 'birds']``.
-
-
-- `Github <https://github.com/matthiask/django-curtains/>`_
