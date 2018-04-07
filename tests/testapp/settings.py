@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sessions',
     'testapp',
     'curtains',
 ]
@@ -31,7 +32,6 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'curtains.middleware.only_staff',
 ]
 TEMPLATES = [
     {
