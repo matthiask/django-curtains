@@ -6,15 +6,28 @@ python:
   - "3.5"
   - "2.7"
 env:
-  - REQ="Django>=1.11,<2.0"
+  - REQ="Django>=2.1,<2.2"
   - REQ="Django>=2.0,<2.1"
+  - REQ="Django>=1.11,<2.0"
 matrix:
   exclude:
     - python: '2.7'
       env: REQ="Django>=2.0,<2.1"
+    - python: '2.7'
+      env: REQ="Django>=2.1,<2.2"
 install:
   - pip install -U pip wheel
-  - pip install $REQ flake8
+  - pip install $REQ
   - python setup.py install
 # command to run tests, e.g. python setup.py test
-script: "cd tests && ./manage.py test testapp && cd .. && flake8 ."
+script: "cd tests && ./manage.py test testapp && cd ..
+
+jobs:
+  include:
+    - stage: style
+      env: REQ=none
+      install: skip
+      script:
+        - pip install black flake8
+        - flake8 .
+        - black --check curtains tests
