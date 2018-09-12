@@ -4,13 +4,9 @@ from django.conf import settings
 from django.http import HttpResponse
 
 
-ONLY_STAFF_EXEMPT = getattr(
-    settings,
-    'ONLY_STAFF_EXEMPT',
-    ('/admin', '/accounts'),
-)
+ONLY_STAFF_EXEMPT = getattr(settings, "ONLY_STAFF_EXEMPT", ("/admin", "/accounts"))
 
-ONLY_STAFF_PAGE = '''
+ONLY_STAFF_PAGE = """
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -46,12 +42,13 @@ ONLY_STAFF_PAGE = '''
   <div>
     <p>Sorry, but we cannot show you this page right now. Please
     authenticate.</p>
-    <p><a href="/admin/">Link to the admin panel</a></p>
+    <p><a href="/admin/login/" target="_blank">Log in to the admin
+    panel</a></p>
   </div>
 </article>
 </body>
 </html>
-'''
+"""
 
 
 def only_staff(get_response):
@@ -59,11 +56,7 @@ def only_staff(get_response):
         if request.path.startswith(ONLY_STAFF_EXEMPT):
             return get_response(request)
         elif not request.user.is_staff:
-            return HttpResponse(
-                ONLY_STAFF_PAGE,
-                content_type='text/html',
-                status=403,
-            )
+            return HttpResponse(ONLY_STAFF_PAGE, content_type="text/html", status=403)
 
         return get_response(request)
 
