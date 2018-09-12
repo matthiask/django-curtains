@@ -20,7 +20,7 @@ install:
   - pip install $REQ
   - python setup.py install
 # command to run tests, e.g. python setup.py test
-script: "cd tests && ./manage.py test testapp && cd ..
+script: "cd tests && ./manage.py test testapp && cd .."
 
 jobs:
   include:
