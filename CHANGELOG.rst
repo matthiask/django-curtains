@@ -4,6 +4,9 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+`0.4`_ (2019-06-13)
+~~~~~~~~~~~~~~~~~~~
+
 - Added a middleware which allows whitelisting IP networks.
 - Dropped Python 2 compatibility.
 
@@ -31,4 +34,5 @@ Change log
 .. _0.1: https://github.com/matthiask/django-curtains/commit/89bb93c5cdba
 .. _0.2: https://github.com/matthiask/django-curtains/compare/0.1...0.2
 .. _0.3: https://github.com/matthiask/django-curtains/compare/0.2...0.3
-.. _Next version: https://github.com/matthiask/django-curtains/compare/0.3...master
+.. _0.4: https://github.com/matthiask/django-curtains/compare/0.3...0.4
+.. _Next version: https://github.com/matthiask/django-curtains/compare/0.4...master
