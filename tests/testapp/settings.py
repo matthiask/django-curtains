@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import os
 
 
@@ -11,6 +9,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.admin",
     "django.contrib.auth",
+    "django.contrib.messages",
     "django.contrib.sessions",
     "testapp",
     "curtains",
@@ -43,3 +42,5 @@ TEMPLATES = [
         },
     }
 ]
+
+IP_NETWORKS = ["127.0.0.0/8"]

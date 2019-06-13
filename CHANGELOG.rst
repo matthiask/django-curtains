@@ -4,6 +4,10 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Added a middleware which allows whitelisting IP networks.
+- Dropped Python 2 compatibility.
+
+
 `0.3`_ (2018-09-12)
 ~~~~~~~~~~~~~~~~~~~
 
