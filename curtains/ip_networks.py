@@ -10,7 +10,8 @@ BLOCKED_PAGE = """
 <!DOCTYPE html>
 <html>
 <body>
-<h1>IP blocked, sorry</h1>
+<h1>Unexpected IP address</h1>
+<p>Your IP %s is not in the allowlist, sorry.</p>
 </body>
 </html>
 """
@@ -31,6 +32,6 @@ def ip_networks_only(get_response):
         ip = ipaddress.ip_address(visitor_ip_address(request))
         if any(ip in network for network in IP_NETWORKS):
             return get_response(request)
-        return HttpResponse(BLOCKED_PAGE, content_type="text/html", status=403)
+        return HttpResponse(BLOCKED_PAGE % ip, content_type="text/html", status=403)
 
     return middleware
