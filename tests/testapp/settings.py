@@ -42,5 +42,3 @@ TEMPLATES = [
         },
     }
 ]
-
-IP_NETWORKS = ["127.0.0.0/8"]

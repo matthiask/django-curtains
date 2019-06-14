@@ -4,7 +4,10 @@ from django.conf import settings
 from django.http import HttpResponse
 
 
-IP_NETWORKS = [ipaddress.ip_network(spec) for spec in settings.IP_NETWORKS]
+IP_NETWORKS = [
+    ipaddress.ip_network(spec)
+    for spec in getattr(settings, "IP_NETWORKS", ["127.0.0.0/8"])
+]
 
 BLOCKED_PAGE = """
 <!DOCTYPE html>
