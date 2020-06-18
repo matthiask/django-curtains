@@ -28,3 +28,10 @@ Requires basic authorization to access the site. The
 ``BASIC_AUTH_CREDENTIALS`` setting should be set to a list containing
 the username and the password for basic authorization, e.g.
 ``BASIC_AUTH_CREDENTIALS = ['early', 'birds']``.
+
+
+``curtains.middleware.ip_networks_only``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Requires a list of networks in the ``IP_NETWORKS`` setting. The default
+is ``127.0.0.0/8``.
