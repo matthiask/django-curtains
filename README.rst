@@ -2,8 +2,9 @@
 django-curtains - Middleware for temporarily protecting projects
 ================================================================
 
-.. image:: https://travis-ci.org/matthiask/django-curtains.svg?branch=master
-    :target: https://travis-ci.org/matthiask/django-curtains
+.. image:: https://github.com/matthiask/django-curtains/workflows/Tests/badge.svg
+    :target: https://github.com/matthiask/django-curtains/
+    :alt: CI Status
 
 
 Usage
