@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.test import Client, TestCase
 from django.test.utils import override_settings
 
+from curtains.only_staff import convert_list_to_re
+
 
 @override_settings(MIDDLEWARE=settings.MIDDLEWARE + ["curtains.middleware.only_staff"])
 class OnlyStaff(TestCase):
@@ -29,3 +31,8 @@ class OnlyStaff(TestCase):
 
         response = client.get("/admin/")
         self.assertEqual(response.status_code, 200)
+
+    def test_convert_list_to_re(self):
+        self.assertEqual(convert_list_to_re("bla"), "bla")
+        self.assertEqual(convert_list_to_re(["bla"]), "^bla")
+        self.assertEqual(convert_list_to_re(["bla", "blu"]), "^bla|^blu")

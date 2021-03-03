@@ -8,6 +8,7 @@ Change log
 - Verified support for Django 3.x and Python 3.8 and 3.9.
 - Switched to using a declarative setup.
 - Switched from Travis CI to GitHub actions.
+- Allowed specifying a regex for ``ONLY_STAFF_EXEMPT``.
 
 
 `0.4`_ (2019-06-13)
