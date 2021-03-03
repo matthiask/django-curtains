@@ -6,6 +6,7 @@ Change log
 
 - Dropped Python<3.6 and Django<2.2 from the Travis CI matrix.
 - Verified support for Django 3.x and Python 3.8.
+- Switched to using a declarative setup.
 
 
 `0.4`_ (2019-06-13)
