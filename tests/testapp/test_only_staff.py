@@ -6,7 +6,9 @@ from django.test.utils import override_settings
 from curtains.only_staff import convert_list_to_re
 
 
-@override_settings(MIDDLEWARE=settings.MIDDLEWARE + ["curtains.middleware.only_staff"])
+@override_settings(
+    MIDDLEWARE=settings.MIDDLEWARE + ["curtains.middleware.only_staff"],
+)
 class OnlyStaff(TestCase):
     def test_middleware(self):
         response = self.client.get("/")
@@ -34,5 +36,19 @@ class OnlyStaff(TestCase):
 
     def test_convert_list_to_re(self):
         self.assertEqual(convert_list_to_re("bla"), "bla")
-        self.assertEqual(convert_list_to_re(["bla"]), "^bla")
-        self.assertEqual(convert_list_to_re(["bla", "blu"]), "^bla|^blu")
+        self.assertEqual(convert_list_to_re(("bla",)), "^bla")
+        self.assertEqual(convert_list_to_re(("bla", "blu")), "^bla|^blu")
+
+    @override_settings(
+        ONLY_STAFF_EXEMPT=r"^answer/",
+    )
+    def test_exempt_re(self):
+        response = self.client.get("/answer/")
+        self.assertEqual(response.content, b"42")
+
+    @override_settings(
+        ONLY_STAFF_EXEMPT=["/answer/"],
+    )
+    def test_exempt_list(self):
+        response = self.client.get("/answer/")
+        self.assertEqual(response.content, b"42")
