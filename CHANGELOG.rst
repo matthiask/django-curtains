@@ -4,6 +4,14 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+.. _Next version: https://github.com/matthiask/django-curtains/compare/0.6...main
+
+
+`0.6`_ (2022-04-04)
+~~~~~~~~~~~~~~~~~~~
+
+.. _0.6: https://github.com/matthiask/django-curtains/compare/0.5...0.6
+
 - Modernized the package, dropped Python<3.8 and Django<3.2.
 - Added pre-commit.
 - Added ``BASIC_AUTH_EXEMPT`` and ``IP_NETWORKS_EXEMPT`` settings.
@@ -11,6 +19,8 @@ Change log
 
 `0.5`_ (2021-03-03)
 ~~~~~~~~~~~~~~~~~~~
+
+.. _0.5: https://github.com/matthiask/django-curtains/compare/0.4...0.5
 
 - Dropped Python<3.6 and Django<2.2.
 - Verified support for Django 3.x and Python 3.8 and 3.9.
@@ -51,5 +61,3 @@ Change log
 .. _0.2: https://github.com/matthiask/django-curtains/compare/0.1...0.2
 .. _0.3: https://github.com/matthiask/django-curtains/compare/0.2...0.3
 .. _0.4: https://github.com/matthiask/django-curtains/compare/0.3...0.4
-.. _0.5: https://github.com/matthiask/django-curtains/compare/0.4...0.5
-.. _Next version: https://github.com/matthiask/django-curtains/compare/0.5...main
