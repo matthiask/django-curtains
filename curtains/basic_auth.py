@@ -18,7 +18,7 @@ def basic_auth(get_response):
     CREDENTIALS = list(settings.BASIC_AUTH_CREDENTIALS)
 
     def middleware(request):
-        header = request.META.get("HTTP_AUTHORIZATION")
+        header = request.headers.get("Authorization")
         if header and parse_basic_authorization(header) == CREDENTIALS:
             return get_response(request)
 

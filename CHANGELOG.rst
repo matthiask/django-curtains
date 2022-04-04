@@ -4,6 +4,10 @@ Change log
 `Next version`_
 ~~~~~~~~~~~~~~~
 
+- Modernized the package, dropped Python<3.8 and Django<3.2.
+- Added pre-commit.
+
+
 
 `0.5`_ (2021-03-03)
 ~~~~~~~~~~~~~~~~~~~
