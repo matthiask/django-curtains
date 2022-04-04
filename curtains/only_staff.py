@@ -1,11 +1,9 @@
 import re
-from functools import lru_cache
 
 from django.conf import settings
 from django.http import HttpResponse
 
 
-@lru_cache
 def convert_list_to_re(exempt):
     if isinstance(exempt, (tuple, list)):
         return "|".join("^%s" % re.escape(path) for path in exempt)
@@ -59,7 +57,7 @@ ONLY_STAFF_PAGE = """
 
 def _only_staff_exempt():
     return convert_list_to_re(
-        tuple(getattr(settings, "ONLY_STAFF_EXEMPT", ("/admin", "/accounts")))
+        getattr(settings, "ONLY_STAFF_EXEMPT", r"^/admin|^/accounts")
     )
 
 

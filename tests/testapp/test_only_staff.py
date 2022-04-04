@@ -40,15 +40,23 @@ class OnlyStaff(TestCase):
         self.assertEqual(convert_list_to_re(("bla", "blu")), "^bla|^blu")
 
     @override_settings(
-        ONLY_STAFF_EXEMPT=r"^answer/",
+        ONLY_STAFF_EXEMPT=r"^/answer/",
     )
     def test_exempt_re(self):
         response = self.client.get("/answer/")
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, b"42")
+
+        response = self.client.get("/other/")
+        self.assertEqual(response.status_code, 403)
 
     @override_settings(
         ONLY_STAFF_EXEMPT=["/answer/"],
     )
     def test_exempt_list(self):
         response = self.client.get("/answer/")
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, b"42")
+
+        response = self.client.get("/other/")
+        self.assertEqual(response.status_code, 403)

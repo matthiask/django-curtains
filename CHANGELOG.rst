@@ -6,7 +6,7 @@ Change log
 
 - Modernized the package, dropped Python<3.8 and Django<3.2.
 - Added pre-commit.
-
+- Added ``BASIC_AUTH_EXEMPT`` and ``IP_NETWORKS_EXEMPT`` settings.
 
 
 `0.5`_ (2021-03-03)

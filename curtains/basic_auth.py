@@ -1,4 +1,5 @@
 import base64
+import re
 
 from django.conf import settings
 from django.http import HttpResponse
@@ -18,6 +19,10 @@ def basic_auth(get_response):
     CREDENTIALS = list(settings.BASIC_AUTH_CREDENTIALS)
 
     def middleware(request):
+        if exempt := getattr(settings, "BASIC_AUTH_EXEMPT", None):
+            if re.match(exempt, request.path):
+                return get_response(request)
+
         header = request.headers.get("Authorization")
         if header and parse_basic_authorization(header) == CREDENTIALS:
             return get_response(request)

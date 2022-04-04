@@ -20,3 +20,14 @@ class BasicAuth(TestCase):
 
         response = self.client.get("/", HTTP_AUTHORIZATION="Basic dXNlcjpwdw==")
         self.assertEqual(response.status_code, 404)
+
+    @override_settings(
+        BASIC_AUTH_EXEMPT=r"^/answer/",
+    )
+    def test_exempt_re(self):
+        response = self.client.get("/answer/")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content, b"42")
+
+        response = self.client.get("/other/")
+        self.assertEqual(response.status_code, 401)

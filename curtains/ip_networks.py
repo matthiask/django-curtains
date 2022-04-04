@@ -1,4 +1,5 @@
 import ipaddress
+import re
 
 from django.conf import settings
 from django.http import HttpResponse
@@ -32,6 +33,10 @@ def visitor_ip_address(request):
 
 def ip_networks_only(get_response):
     def middleware(request):
+        if exempt := getattr(settings, "IP_NETWORKS_EXEMPT", None):
+            if re.match(exempt, request.path):
+                return get_response(request)
+
         ip = ipaddress.ip_address(visitor_ip_address(request))
         if any(ip in network for network in IP_NETWORKS):
             return get_response(request)

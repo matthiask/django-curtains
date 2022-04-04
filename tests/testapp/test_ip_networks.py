@@ -13,3 +13,14 @@ class IPNetworksOnly(TestCase):
 
         response = self.client.get("/", HTTP_X_FORWARDED_FOR="1.1.1.1")
         self.assertEqual(response.status_code, 403)
+
+    @override_settings(
+        IP_NETWORKS_EXEMPT=r"^/answer/",
+    )
+    def test_exempt_re(self):
+        response = self.client.get("/answer/", HTTP_X_FORWARDED_FOR="1.1.1.1")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content, b"42")
+
+        response = self.client.get("/other/", HTTP_X_FORWARDED_FOR="1.1.1.1")
+        self.assertEqual(response.status_code, 403)
