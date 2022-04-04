@@ -63,7 +63,7 @@ def only_staff(get_response):
         if re.match(ONLY_STAFF_EXEMPT, request.path):
             return get_response(request)
         elif not request.user.is_staff:
-            return HttpResponse(ONLY_STAFF_PAGE, content_type="text/html", status=403)
+            return HttpResponse(ONLY_STAFF_PAGE, status=403)
 
         return get_response(request)
 
