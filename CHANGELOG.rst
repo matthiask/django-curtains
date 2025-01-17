@@ -6,6 +6,9 @@ Change log
 
 .. _Next version: https://github.com/matthiask/django-curtains/compare/0.6...main
 
+- Moved to hatchling, dropped Python<3.9, added Django 4.2, 5.1, 5.2a1, and
+  Python 3.10, 3.11, 3.12, 3.13.
+
 
 `0.6`_ (2022-04-04)
 ~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,114 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = [
+  "hatchling",
+]
+
+[project]
+name = "django-curtains"
+description = "Middleware for only allowing access to staff members"
+readme = "README.rst"
+license = { text = "BSD-3-Clause" }
+authors = [
+  { name = "Matthias Kestenholz", email = "mk@feinheit.ch" },
+]
+requires-python = ">=3.9"
+classifiers = [
+  "Environment :: Web Environment",
+  "Framework :: Django",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+  "Topic :: Software Development",
+  "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+dynamic = [
+  "version",
+]
+dependencies = [
+  "django>=3.2",
+]
+optional-dependencies.tests = [
+  "coverage",
+]
+urls.Homepage = "https://github.com/matthiask/django-curtains/"
+
+[tool.hatch.build]
+include = [
+  "curtains/",
+]
+
+[tool.hatch.version]
+path = "curtains/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/curtains",
+]
+
+[tool.ruff]
+target-version = "py39"
+
+fix = true
+show-fixes = true
+lint.extend-select = [
+  # flake8-bugbear
+  "B",
+  # flake8-comprehensions
+  "C4",
+  # mmcabe
+  "C90",
+  # flake8-django
+  "DJ",
+  "E",
+  # pyflakes, pycodestyle
+  "F",
+  # flake8-boolean-trap
+  "FBT",
+  # isort
+  "I",
+  # flake8-gettext
+  "INT",
+  # flake8-implicit-string-concatenation
+  "ISC",
+  # pygrep-hooks
+  "PGH",
+  # flake8-pie
+  "PIE",
+  # pylint
+  "PLC",
+  "PLE",
+  "PLW",
+  # unused noqa
+  "RUF100",
+  # pyupgrade
+  "UP",
+  "W",
+  # flake8-2020
+  "YTT",
+]
+lint.extend-ignore = [
+  # Allow zip() without strict=
+  "B905",
+  # No line length errors
+  "E501",
+  # Do not warn about percent formatting for now
+  "UP031",
+]
+lint.per-file-ignores."*/migrat*/*" = [
+  # Allow using PascalCase model names in migrations
+  "N806",
+  # Ignore the fact that migration files are invalid module names
+  "N999",
+]
+lint.isort.combine-as-imports = true
+lint.isort.lines-after-imports = 2
+lint.mccabe.max-complexity = 15
